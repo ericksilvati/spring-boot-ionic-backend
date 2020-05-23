@@ -31,7 +31,8 @@ public class Pedido implements Serializable{
 		this.instante = instante;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
-	}
+	}	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -55,7 +56,15 @@ public class Pedido implements Serializable{
 	@OneToMany(mappedBy="id.pedido")
 	private Set<ItemPedido> itens = new HashSet<>();
 	
-	
+	public Double getValorTotal() {
+		Double soma = 0.0;
+		
+		for (ItemPedido p : itens) {
+			soma = soma+p.getSubTotal();
+		}
+		
+		return soma;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
