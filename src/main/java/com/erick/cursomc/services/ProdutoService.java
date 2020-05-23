@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.erick.cursomc.domain.Categoria;
+import com.erick.cursomc.domain.ItemPedido;
 import com.erick.cursomc.domain.Produto;
 import com.erick.cursomc.exceptions.ObjectNotFoundException;
 import com.erick.cursomc.repositories.CategoriaRepository;
@@ -24,7 +25,7 @@ public class ProdutoService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
-	public Produto buscar(Integer id) {
+	public Produto find(Integer id) {
 		
 		Produto obj = repo.findOne(id);
 		if (obj==null) {
